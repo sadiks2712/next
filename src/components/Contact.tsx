@@ -55,14 +55,44 @@ export default function Contact() {
     e.preventDefault();
     setSending(true);
     setError("");
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey || serviceId === "your_service_id") {
+      setError("EmailJS is not configured. Please add your credentials to .env.local");
+      setSending(false);
+      return;
+    }
+
     try {
-      const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      const payload = {
+        service_id: serviceId,
+        template_id: templateId,
+        user_id: publicKey,
+        template_params: {
+          from_name: form.name,
+          from_email: form.email,
+          service: form.service,
+          budget: form.budget,
+          message: form.message,
+        },
+      };
+
+      const res = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(form),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       });
-      if (res.ok) { setSent(true); setForm({ name: "", email: "", service: "", budget: "", message: "" }); }
-      else setError("Something went wrong. Please try again.");
+
+      if (res.ok) {
+        setSent(true);
+        setForm({ name: "", email: "", service: "", budget: "", message: "" });
+      } else {
+        const text = await res.text();
+        setError(text || "Something went wrong. Please try again.");
+      }
     } catch {
       setError("Network error. Please try again.");
     }
