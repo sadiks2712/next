@@ -5,7 +5,7 @@ import { ExternalLink } from "lucide-react";
 
 const GithubIcon = ({ size = 18 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
   </svg>
 );
 
@@ -17,7 +17,7 @@ const allProjects = [
   { id: 5, name: "Docto Analy AI", desc: "Medical document analysis and insights generator", tags: ["AI", "HealthTech", "Next.js"], categories: ["Web Apps", "Data Analytics"], gradient: "linear-gradient(135deg,#1e3a5f,#0369a1)", icon: "🩺", link: "https://docto-analy-ai.vercel.app" },
   { id: 6, name: "Sahara Fabrication", desc: "Professional business website for a fabrication company", tags: ["React", "Tailwind", "Business"], categories: ["Client Projects", "UI/UX"], gradient: "linear-gradient(135deg,#2d1b4e,#6d28d9)", icon: "🏗️", link: "https://sahara-fabrication.vercel.app" },
   { id: 7, name: "Smart Community", desc: "Community management system for efficient society operations", tags: ["Next.js", "React", "Firebase"], categories: ["Web Apps", "Client Projects"], gradient: "linear-gradient(135deg,#0d9488,#115e59)", icon: "🏙️", link: "https://nextgencoders123.vercel.app" },
-  { id: 8, name: "Personal Portfolio", desc: "A creative digital portfolio showcasing my past work", tags: ["React", "Next.js", "Tailwind"], categories: ["Web Apps"], gradient: "linear-gradient(135deg,#1a2a1a,#15803d)", icon: "💻", link: "https://nextgencoders123-whb7.vercel.app" },
+  { id: 8, name: "Personal Portfolio", desc: "A creative digital portfolio showcasing my past work", tags: ["React", "Next.js", "Tailwind"], categories: ["Web Apps"], gradient: "linear-gradient(135deg,#1a2a1a,#15803d)", icon: "💻", link: "https://sadikshaikh.vercel.app" },
 ];
 
 const tabs = ["All", "Web Apps", "Data Analytics", "APIs/Backend", "UI/UX", "Open Source", "Client Projects"];
@@ -81,7 +81,7 @@ export default function Projects() {
         <motion.div layout style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
           <AnimatePresence mode="popLayout">
             {filtered.map((proj) => (
-               <motion.div
+              <motion.div
                 key={proj.id}
                 layout
                 initial={{ opacity: 0, scale: 0.9 }}
