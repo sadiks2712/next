@@ -65,7 +65,11 @@ export default function Contact() {
     }
 
     try {
-      const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
+      const endpoint = formspreeId.startsWith("http")
+        ? formspreeId
+        : `https://formspree.io/f/${formspreeId}`;
+
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(form),
