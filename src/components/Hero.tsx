@@ -1,8 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import { Download, ArrowRight, ChevronDown } from "lucide-react";
-import dynamic from "next/dynamic";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 
 const Scene3D = dynamic(() => import("./Scene3D"), { ssr: false });
 
@@ -26,7 +26,7 @@ export default function Hero() {
   return (
     <section id="home" style={{ minHeight: "100vh", display: "flex", alignItems: "center", position: "relative", overflow: "hidden", paddingTop: 70 }}>
       {/* Dot grid background */}
-      <div className="dot-grid" style={{ position: "absolute", inset: 0, opacity: 0.5, zIndex: 0 }} />
+      <div className="dot-grid" style={{ position: "absolute", inset: 0, opacity: 0.5, zIndex: -1 }} />
 
       {/* 3D Background */}
       <Scene3D />
@@ -115,34 +115,6 @@ export default function Hero() {
         onClick={() => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })}>
         <ChevronDown size={28} />
       </motion.div>
-
-      <style>{`
-        @media (max-width: 860px) {
-          #home .container { 
-            display: flex !important; 
-            flex-direction: column-reverse !important; 
-            text-align: center; 
-            gap: 50px !important; 
-            padding-top: 40px !important;
-          }
-          #home .container > div:first-child {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          }
-          #home .container > div > div { 
-            justify-content: center; 
-          }
-        }
-        @media (max-width: 480px) {
-          #home .profile-ring-container { 
-            transform: scale(0.75); 
-          }
-          #home h1 {
-            font-size: 3rem !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

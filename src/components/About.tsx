@@ -98,12 +98,6 @@ export default function About() {
           </motion.div>
         </div>
       </div>
-      <style>{`
-        @media (max-width: 860px) {
-          #about .container > div { grid-template-columns: 1fr !important; gap: 40px !important; }
-        }
-        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-      `}</style>
     </section>
   );
 }

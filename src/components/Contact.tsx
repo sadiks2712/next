@@ -196,9 +196,6 @@ export default function Contact() {
           </motion.div>
         </div>
       </div>
-      <style>{`
-        @media (max-width: 860px) { #contact .container > div:last-child { grid-template-columns: 1fr !important; } }
-      `}</style>
     </section>
   );
 }

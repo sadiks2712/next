@@ -59,10 +59,6 @@ export default function Skills() {
           ))}
         </div>
       </div>
-      <style>{`
-        @media (max-width: 900px) { #skills .container > div:last-child { grid-template-columns: 1fr 1fr !important; } }
-        @media (max-width: 560px) { #skills .container > div:last-child { grid-template-columns: 1fr !important; } }
-      `}</style>
     </section>
   );
 }

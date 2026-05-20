@@ -123,10 +123,6 @@ export default function Projects() {
           </AnimatePresence>
         </motion.div>
       </div>
-      <style>{`
-        @media (max-width: 900px) { #projects .container > div:last-child { grid-template-columns: 1fr 1fr !important; } }
-        @media (max-width: 560px) { #projects .container > div:last-child { grid-template-columns: 1fr !important; } }
-      `}</style>
     </section>
   );
 }

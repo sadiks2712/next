@@ -66,12 +66,13 @@ export default function Navbar() {
           left: 0,
           right: 0,
           zIndex: 999,
-          transition: "all 0.4s ease",
+          transition: "background-color 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease",
           background: scrolled
             ? "var(--bg-nav)"
             : "transparent",
           backdropFilter: scrolled ? "blur(20px)" : "none",
-          borderBottom: scrolled ? "1px solid rgba(37,99,235,0.15)" : "none",
+          borderBottom: "1px solid",
+          borderColor: scrolled ? "rgba(37, 99, 235, 0.15)" : "transparent",
           padding: "0 24px",
         }}
       >
@@ -118,6 +119,7 @@ export default function Navbar() {
                 <a
                   href={href}
                   onClick={(e) => { e.preventDefault(); handleNav(href); }}
+                  className="nav-link"
                   style={{
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: 14,
@@ -126,20 +128,10 @@ export default function Navbar() {
                     color:
                       activeSection === href.slice(1)
                         ? "var(--accent)"
-                        : "var(--text-primary)",
-                    transition: "color 0.2s",
+                        : "var(--text-secondary)",
                     position: "relative",
                     paddingBottom: 4,
                   }}
-                  onMouseEnter={(e) =>
-                    ((e.target as HTMLElement).style.color = "#2563eb")
-                  }
-                  onMouseLeave={(e) =>
-                    ((e.target as HTMLElement).style.color =
-                      activeSection === href.slice(1)
-                        ? "var(--accent)"
-                        : "var(--text-secondary)")
-                  }
                 >
                   {label}
                   {activeSection === href.slice(1) && (
@@ -239,9 +231,9 @@ export default function Navbar() {
                       color:
                         activeSection === href.slice(1)
                           ? "#2563eb"
-                          : "rgba(255,255,255,0.8)",
+                          : "var(--text-secondary)",
                       textDecoration: "none",
-                      borderBottom: "1px solid rgba(255,255,255,0.06)",
+                      borderBottom: "1px solid var(--border-subtle)",
                     }}
                   >
                     {label}
@@ -261,15 +253,6 @@ export default function Navbar() {
         </AnimatePresence>
       </motion.nav>
 
-      <style>{`
-        @media (max-width: 768px) {
-          .hidden-mobile { display: none !important; }
-          .show-mobile { display: flex !important; }
-        }
-        @media (min-width: 769px) {
-          .show-mobile { display: none !important; }
-        }
-      `}</style>
     </>
   );
 }
